@@ -6,9 +6,6 @@ require('dotenv/config');
 const app = express();
 const {addUser, removeUser, getUser, getUsersInRoom ,getUserInRoomCount} = require('./users.js');
 
-app.get('/', (req, res) => {
-  res.send('this is main page from server.js');
-})
 
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('client/build'));
