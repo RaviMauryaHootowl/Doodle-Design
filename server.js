@@ -26,8 +26,6 @@ io.sockets.on('connection', (socket) => {
   console.log("New connection made => " + socket.id);
   let userObj;
   
-  
-  //console.log(canvasData);
 
   socket.on('newConnection', (data) => {
     console.log(data.roomName + "  ->  " + data.userName);
