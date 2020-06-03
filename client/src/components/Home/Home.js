@@ -25,6 +25,10 @@ function Home() {
         <input className="userNameInput" placeholder="Enter a User name" type="text" value={userName} onChange={(e) => {setUserName(e.target.value.toLowerCase());}} name="" id=""/>
         <button className="joinBtn" onClick={joinRoom}>Join</button>
       </div>
+      <div className="noAllowedCard">
+        <span>Not Recommended For Small Screens</span>
+        <span>Use the website on PC, Laptop.</span>
+      </div>
       <div className="credits">
         Made by <span className="myName">Ravi Maurya</span>
       </div>

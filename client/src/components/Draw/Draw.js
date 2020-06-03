@@ -155,6 +155,7 @@ function Draw() {
     <div className="DrawPage">
       
       <div className="optionsBar">
+        <span className="headerBarTitle">Doodle & Design</span>
         <div className="mainOptions">
           <div className="speedSliderContainer">
             <input className="speedSlider" min="2" max="50" value={strokeWeight} type="range" name="" id="" onChange={(e) => setStrokeWeight(e.target.value)}/>

@@ -19,6 +19,20 @@
   padding: 10px;
 }
 
+.headerBarTitle{
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Pacifico', cursive;
+  color: white;
+  padding-left: 10px;
+}
+
+@media only screen and (max-width: 800px){
+  .headerBarTitle{
+    display: none;
+  }
+}
+
 .eraser{
   border-radius: 100vh;
   height: 40px;
