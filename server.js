@@ -50,24 +50,29 @@ io.sockets.on('connection', (socket) => {
     }
   })
 
-  if(userObj != null){
-    socket.on('clearBoard', (data) => {
+  
+
+  socket.on('clearBoard', (data) => {
+    if(userObj){
       console.log(userObj);
       canvasData[userObj.room].length = 0;
       io.sockets.in(userObj.room).emit('clearBoard');
-    })
-  
-  
-    socket.on('draw', (data) => {
+    }
+  })
+
+
+  socket.on('draw', (data) => {
+    if(userObj){
       canvasData[userObj.room].push(data);
       socket.broadcast.to(userObj.room).emit('draw', data);
-    });
-
-  }
+    }
+  });
   
   socket.on('disconnect', () => {
     removeUser(socket.id);
-    io.sockets.in(user.room).emit('userChange', getUserInRoomCount(user.room));
+    if(userObj){
+      io.sockets.in(userObj.room).emit('userChange', getUserInRoomCount(userObj.room));
+    }
     console.log("User Disconnected");
   })
 })
