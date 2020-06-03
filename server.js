@@ -45,7 +45,7 @@ io.sockets.on('connection', (socket) => {
       userObj = user;
       socket.join(user.room);
       io.sockets.in(user.room).emit('canvasData', canvasData[user.room]);
-
+      io.sockets.in(user.room).emit('snackMessage', `${user.name} has joined the room.`);
       io.sockets.in(user.room).emit('userChange', getUserInRoomCount(user.room));
     }
   })
@@ -57,6 +57,7 @@ io.sockets.on('connection', (socket) => {
       console.log(userObj);
       canvasData[userObj.room].length = 0;
       io.sockets.in(userObj.room).emit('clearBoard');
+      io.sockets.in(userObj.room).emit('snackMessage', `${userObj.name} has cleared the canvas.`);
     }
   })
 
@@ -72,6 +73,7 @@ io.sockets.on('connection', (socket) => {
     removeUser(socket.id);
     if(userObj){
       io.sockets.in(userObj.room).emit('userChange', getUserInRoomCount(userObj.room));
+      io.sockets.in(userObj.room).emit('snackMessage', `${userObj.name} has left the room.`);
       if(getUserInRoomCount(userObj.room) == 0){
         canvasData[userObj.room].length = 0;
       }

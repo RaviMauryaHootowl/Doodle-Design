@@ -17,7 +17,7 @@ function Draw() {
   const [userName, setUserName] = useState('');
   const [isMenuOpened, setIsMenuOpened] = useState(false);
   const [eraserMode, setEraserMode] = useState(false);
-  const [strokeColor, setStrokeColor] = useState('#000000');
+  const [strokeColor, setStrokeColor] = useState('#2c3e50');
   const [strokeWeight, setStrokeWeight] = useState(8);
   const [nUsers, setNUsers] = useState(1);
   const location = useLocation();
@@ -54,6 +54,14 @@ function Draw() {
 
       socket.on('userChange' , (data) => {
         setNUsers(data);
+      })
+
+      socket.on('snackMessage', message => {
+        document.querySelector(".snackbar").innerHTML = message;
+        document.querySelector(".snackbar").className = "snackbar show";
+        setTimeout(() => {
+          document.querySelector(".snackbar").className = "snackbar";
+        }, 3000)
       })
 
       socket.emit('newConnection', {'roomName' : room, 'userName' : name});
@@ -178,7 +186,7 @@ function Draw() {
       </div> */}
       <Sketch className="sketchBoard" setup={setup} draw={draw} />
 
-      
+      <div className="snackbar">Someone cleared the board.</div>
     </div>
   );
 }
