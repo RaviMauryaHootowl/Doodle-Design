@@ -30,7 +30,6 @@ io.sockets.on('connection', (socket) => {
   //console.log(canvasData);
 
   socket.on('newConnection', (data) => {
-    
     console.log(data.roomName + "  ->  " + data.userName);
     const {error, user} = addUser(socket.id,data.roomName, data.userName);
     
@@ -51,20 +50,21 @@ io.sockets.on('connection', (socket) => {
     }
   })
 
-  socket.on('clearBoard', (data) => {
-    console.log(userObj);
-    canvasData[userObj.room].length = 0;
-    io.sockets.in(userObj.room).emit('clearBoard');
-  })
-
-  socket.on('draw', (data) => {
-
-    canvasData[userObj.room].push(data);
-    socket.broadcast.to(userObj.room).emit('draw', data);
-  });
-
+  if(userObj != null){
+    socket.on('clearBoard', (data) => {
+      console.log(userObj);
+      canvasData[userObj.room].length = 0;
+      io.sockets.in(userObj.room).emit('clearBoard');
+    })
   
+  
+    socket.on('draw', (data) => {
+      canvasData[userObj.room].push(data);
+      socket.broadcast.to(userObj.room).emit('draw', data);
+    });
 
+  }
+  
   socket.on('disconnect', () => {
     removeUser(socket.id);
     io.sockets.in(user.room).emit('userChange', getUserInRoomCount(user.room));
