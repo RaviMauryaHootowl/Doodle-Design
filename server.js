@@ -72,6 +72,9 @@ io.sockets.on('connection', (socket) => {
     removeUser(socket.id);
     if(userObj){
       io.sockets.in(userObj.room).emit('userChange', getUserInRoomCount(userObj.room));
+      if(getUserInRoomCount(userObj.room) == 0){
+        canvasData[userObj.room].length = 0;
+      }
     }
     console.log("User Disconnected");
   })
