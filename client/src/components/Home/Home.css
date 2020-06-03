@@ -1,0 +1,72 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.HomePage{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background-image: url('../../assets/bg2.jpg'); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.appHeader{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.headerTitle{
+  font-size: 50px;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 20px;
+  font-family: 'Pacifico', cursive;
+  background: -webkit-linear-gradient(#2193b0, #6dd5ed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.joinCard{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  /* box-shadow: rgb(158, 158, 158) 1px 1px 10px; */
+  border-radius: 10px;
+  background-color: white;
+}
+
+.roomNameInput, .userNameInput{
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: rgb(233, 233, 233);
+  width: 300px;
+  font-size: 18px;
+}
+
+.joinBtn{
+  border: none;
+  outline: none;
+  background-color: rgb(35, 130, 255);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 18px;
+  color: white;
+  font-weight: 600;
+  border-bottom: rgb(20, 103, 212) 4px solid;
+}
+
+.joinBtn:active{
+  border-bottom: rgb(20, 103, 212) 0px solid;
+}
